@@ -21,6 +21,10 @@ export const UserController = (app: Application) => {
         const user = req.body;
         res.send(await userService.create(user));
     });
+    userRouter.put('/', async (req: Request, res: Response) => {
+        const user = req.body;
+        res.send(await userService.update(user));
+    });
 
     app.use('/user', userRouter);
 };

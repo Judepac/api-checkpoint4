@@ -20,9 +20,17 @@ export class CoursService {
         return await this.repository.save(cours);
     }
 
+    async save(cours: Cours) {
+        return await this.repository.save(cours);
+    }
+
     async update(cours: Cours) {
         const id = cours.id;
         return await this.repository.update( id, cours);
+    }
+
+    async getUser() {
+        return await this.repository.find({relations: ['users', 'disciplines']});
     }
 
 }

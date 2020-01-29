@@ -19,5 +19,9 @@ export class UserService {
         user = this.repository.create(user);
         return await this.repository.save(user);
     }
+    async update(user: User) {
+        const id = user.id;
+        return await this.repository.update( id, user);
+    }
 
 }

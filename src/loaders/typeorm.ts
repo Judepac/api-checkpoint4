@@ -5,11 +5,11 @@ export default async () => {
 
 await createConnection({
     type: 'mysql',
-    host: process.env.TEMPLATE_DB_HOST,
-    port: parseInt(process.env.TEMPLATE_DB_PORT || '3306', 10),
-    username: process.env.TEMPLATE_DB_USER,
-    password: process.env.TEMPLATE_DB_PASS, 
-    database: process.env.TEMPLATE_DB,
+    host: process.env.CHECKPOINT_HOST,
+    port: parseInt(process.env.CHECKPOINT_DB_PORT || '3306', 10),
+    username: process.env.CHECKPOINT_USER,
+    password: process.env.CHECKPOINT_PASSWORD,
+    database: process.env.CHECKPOINT_DATABASE,
     entities: [
         User,
     ],

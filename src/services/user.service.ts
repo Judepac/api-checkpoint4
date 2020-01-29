@@ -8,7 +8,6 @@ import { getCustomRepository } from 'typeorm';
  */
 export class UserService {
 
-
     private repository = getCustomRepository(UserRepository);
 
     // Business logic
@@ -16,7 +15,7 @@ export class UserService {
         return await this.repository.find();
     }
 
-    async create(user: any) {
+    async create(user: User) {
         user = this.repository.create(user);
         return await this.repository.save(user);
     }

@@ -1,3 +1,4 @@
+import { Cours } from './../entity/cours.entity';
 import { getCustomRepository } from 'typeorm';
 import { CoursRepository } from '../repository/cours.repository';
 /**
@@ -14,7 +15,7 @@ export class CoursService {
         return await this.repository.find();
     }
 
-    async create(cours: any) {
+    async create(cours: Cours) {
         cours = this.repository.create(cours);
         return await this.repository.save(cours);
     }

@@ -1,6 +1,7 @@
 import { createConnection } from 'typeorm';
 import { User } from '../entity/user.entity';
 import { Cours } from '../entity/cours.entity';
+import { Discipline } from '../entity/discipline.entity';
 
 export default async () => {
 
@@ -14,6 +15,7 @@ await createConnection({
     entities: [
         User,
         Cours,
+        Discipline,
     ],
     synchronize: true,
 });

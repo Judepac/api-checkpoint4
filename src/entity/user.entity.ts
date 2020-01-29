@@ -7,11 +7,24 @@ export class User {
     id!: number;
 
     @Column({type: 'varchar', length: 25, nullable: false})
-    title!: string;
+    firstname!: string;
 
     @Column({type: 'varchar', length: 15, nullable: false})
-    color!: string;
+    lastname!: string;
 
-    @Column({type: 'varchar', length: 255, nullable: false})
-    icon!: string;
+    @Column({type: 'int', length: 2, nullable: false})
+    age!: number;
+
+    @Column({type: 'varchar', length: 10, nullable: false})
+    phone!: string;
+
+    @Column({type: 'varchar', length: 40, nullable: false})
+    email!: string;
+
+    @Column({type: 'varchar', length: 15, nullable: true})
+    password!: string;
+
+    @Column({type: 'varchar', length: 15, nullable: false, default: 'visiteur'})
+    role!: string;
+
 }

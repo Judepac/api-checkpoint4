@@ -1,5 +1,6 @@
 import { createConnection } from 'typeorm';
 import { User } from '../entity/user.entity';
+import { Cours } from '../entity/cours.entity';
 
 export default async () => {
 
@@ -12,6 +13,7 @@ await createConnection({
     database: process.env.CHECKPOINT_DATABASE,
     entities: [
         User,
+        Cours,
     ],
     synchronize: true,
 });

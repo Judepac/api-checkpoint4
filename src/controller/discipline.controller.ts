@@ -22,5 +22,10 @@ export const DisciplineController = (app: Application) => {
         res.send(await disciplineService.create(discipline));
     });
 
+    disciplineRouter.put('/', async (req: Request, res: Response) => {
+        const discipline = req.body;
+        res.send(await disciplineService.update(discipline));
+    });
+
     app.use('/discipline', disciplineRouter);
 };

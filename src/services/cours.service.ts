@@ -12,12 +12,17 @@ export class CoursService {
 
     // Business logic
     async getAll() {
-        return await this.repository.find();
+        return await this.repository.find({relations: ['disciplines']});
     }
 
     async create(cours: Cours) {
         cours = this.repository.create(cours);
         return await this.repository.save(cours);
+    }
+
+    async update(cours: Cours) {
+        const id = cours.id;
+        return await this.repository.update( id, cours);
     }
 
 }

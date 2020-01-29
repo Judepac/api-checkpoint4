@@ -20,4 +20,9 @@ export class DisciplineService {
         return await this.repository.save(discipline);
     }
 
+    async update(discipline: Discipline) {
+        const id = discipline.id;
+        return await this.repository.update( id, discipline);
+    }
+
 }

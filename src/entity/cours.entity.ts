@@ -9,18 +9,6 @@ export class Cours {
     id!: number;
 
     @Column({type: 'int', nullable: false})
-    idDiscipline!: number;
-
-    @Column({type: 'varchar', length: 25, nullable: false})
-    name!: string;
-
-    @Column({type: 'varchar', length: 150, nullable: false})
-    description!: string;
-
-    @Column({type: 'int', nullable: false})
-    durée!: number;
-
-    @Column({type: 'int', nullable: false})
     capacity!: number;
 
     @Column({type: 'varchar', length: 25, nullable: false})

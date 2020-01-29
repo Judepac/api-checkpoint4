@@ -11,8 +11,17 @@ export class Discipline {
     @Column({type: 'varchar', length: 40, nullable: false})
     name!: string;
 
+    @Column({type: 'varchar', length: 40, nullable: false})
+    genre!: string;
+
+    @Column({type: 'int', nullable: false})
+    durée!: number;
+
     @Column({type: 'boolean', nullable: false})
     tarif!: boolean;
+
+    @Column({type: 'varchar', length: 300, nullable: false})
+    description!: string;
 
     @ManyToOne(type => Categorie, categorie => categorie.disciplines)
     categorie!: Categorie;

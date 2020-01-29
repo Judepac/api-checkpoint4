@@ -22,5 +22,10 @@ export const CoursController = (app: Application) => {
         res.send(await coursService.create(cours));
     });
 
+    coursRouter.put('/', async (req: Request, res: Response) => {
+        const cours = req.body;
+        res.send(await coursService.update(cours));
+    });
+
     app.use('/cours', coursRouter);
 };

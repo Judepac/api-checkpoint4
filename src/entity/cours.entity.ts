@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Discipline } from './discipline.entity';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
+import { User } from './user.entity';
 
 @Entity('cours')
 export class Cours {
@@ -32,5 +34,12 @@ export class Cours {
 
     @Column({type: 'varchar', length: 30, nullable: false})
     lieu!: string;
+
+    @ManyToOne(type => Discipline, discipline => discipline.cours)
+    disciplines!: Discipline;
+
+    @ManyToMany(type => User)
+    @JoinTable()
+    users!: User[];
 
 }

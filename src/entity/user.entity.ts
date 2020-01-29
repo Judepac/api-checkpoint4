@@ -12,7 +12,7 @@ export class User {
     @Column({type: 'varchar', length: 15, nullable: false})
     lastname!: string;
 
-    @Column({type: 'int', length: 2, nullable: false})
+    @Column({type: 'int', nullable: false})
     age!: number;
 
     @Column({type: 'varchar', length: 10, nullable: false})

@@ -17,11 +17,6 @@ export const CoursController = (app: Application) => {
         res.send(await coursService.getAll());
     });
 
-// Get cours with user in cours and discipline.
-    coursRouter.get('/user', async (req: Request, res: Response) => {
-        res.send(await coursService.getUser());
-    });
-
     coursRouter.post('/', async (req: Request, res: Response) => {
         const cours = req.body;
         res.send(await coursService.create(cours));

@@ -12,7 +12,7 @@ export class DisciplineService {
 
     // Business logic
     async getAll() {
-        return await this.repository.find();
+        return await this.repository.find({relations: ['cours', 'genre', 'categorie']});
     }
 
     async create(discipline: Discipline) {

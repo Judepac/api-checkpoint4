@@ -13,7 +13,7 @@ export class Discipline {
     name!: string;
 
     @Column({type: 'int', nullable: false})
-    durée!: number;
+    duree!: number;
 
     @Column({type: 'boolean', nullable: false})
     tarif!: boolean;

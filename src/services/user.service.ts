@@ -15,6 +15,10 @@ export class UserService {
         return await this.repository.find();
     }
 
+    async getTeam() {
+        return await this.repository.find({ role: 'admin'});
+    }
+
     async create(user: User) {
         user = this.repository.create(user);
         return await this.repository.save(user);

@@ -1,6 +1,7 @@
 import { Cours } from './cours.entity';
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
 import { Categorie } from './categorie.entity';
+import { Genre } from './genre.entity';
 
 @Entity('discipline')
 export class Discipline {
@@ -10,9 +11,6 @@ export class Discipline {
 
     @Column({type: 'varchar', length: 40, nullable: false})
     name!: string;
-
-    @Column({type: 'varchar', length: 40, nullable: false})
-    genre!: string;
 
     @Column({type: 'int', nullable: false})
     durée!: number;
@@ -28,4 +26,8 @@ export class Discipline {
 
     @OneToMany(type => Cours, cours => cours.disciplines)
     cours!: Cours[];
+
+    @ManyToOne(type => Genre, genre => genre.disciplines)
+    genre!: Genre;
+
 }

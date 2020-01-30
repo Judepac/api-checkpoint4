@@ -17,6 +17,10 @@ export const UserController = (app: Application) => {
         res.send(await userService.getAll());
     });
 
+    userRouter.get('/formateur', async (req: Request, res: Response) => {
+        res.send(await userService.getTeam());
+    });
+
     userRouter.post('/', async (req: Request, res: Response) => {
         const user = req.body;
         res.send(await userService.create(user));

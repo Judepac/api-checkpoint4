@@ -27,4 +27,13 @@ export class User {
     @Column({type: 'varchar', length: 15, nullable: false, default: 'visiteur'})
     role!: string;
 
+    @Column({type: 'varchar', length: 350, nullable: true})
+    citation!: string;
+
+    @Column({type: 'varchar', length: 40, nullable: true})
+    domaine!: string;
+
+    @Column({type: 'varchar', length: 100, nullable: true})
+    image!: string;
+
 }

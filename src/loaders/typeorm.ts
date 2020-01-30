@@ -3,6 +3,7 @@ import { User } from '../entity/user.entity';
 import { Cours } from '../entity/cours.entity';
 import { Discipline } from '../entity/discipline.entity';
 import { Categorie } from '../entity/categorie.entity';
+import { Genre } from '../entity/genre.entity';
 
 export default async () => {
 
@@ -18,6 +19,7 @@ await createConnection({
         Cours,
         Discipline,
         Categorie,
+        Genre,
     ],
     synchronize: true,
 });

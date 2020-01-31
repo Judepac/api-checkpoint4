@@ -1,5 +1,6 @@
 import express, { Router, Request, Response, Application } from 'express';
 import { CoursService } from '../services/cours.service';
+import { UserService } from '../services/user.service';
 
 /**
  * Ce controller vous servira de modèle pour construire vos différent controller
@@ -12,6 +13,7 @@ export const CoursController = (app: Application) => {
 
     const coursRouter: Router = express.Router();
     const coursService = new CoursService();
+    const userService = new UserService();
 
     coursRouter.get('/', async (req: Request, res: Response) => {
         res.send(await coursService.getAll());
@@ -22,9 +24,12 @@ export const CoursController = (app: Application) => {
         res.send(await coursService.create(cours));
     });
 
-    coursRouter.post('/', async (req: Request, res: Response) => {
-        const cours = req.body;
-        res.send(await coursService.save(cours));
+    coursRouter.post('/initiation', async (req: Request, res: Response) => {
+        let user = req.body.reservation;
+        const coursId = req.body.coursId;
+
+        user = await userService.create(user);
+        res.send(await coursService.newUpdate(coursId, user));
     });
 
     app.use('/cours', coursRouter);

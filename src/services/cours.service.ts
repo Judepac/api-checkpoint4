@@ -16,6 +16,17 @@ export class CoursService {
         return await this.repository.find({relations: ['disciplines', 'disciplines.categorie', 'users']});
     }
 
+    async getCoursWilder(age: number) {
+       const coursList = await this.repository.find({relations: ['disciplines', 'disciplines.categorie', 'users']});
+       const goodCours: Cours[] = [];
+       coursList.forEach(cours => {
+           if ( age >= cours.disciplines.categorie.ageStart && cours.disciplines.categorie.ageEnd >= age ) {
+               goodCours.push(cours);
+           }
+        });
+       return await goodCours;
+    }
+
     async create(cours: Cours) {
         cours = this.repository.create(cours);
         return await this.repository.save(cours);
@@ -24,11 +35,10 @@ export class CoursService {
     async save(cours: Cours) {
         return await this.repository.save(cours);
     }
-
     async update(cours: Cours) {
-        const id = cours.id;
-        return await this.repository.update( id, cours);
+        return await this.repository.update(cours.id, cours);
     }
+
     async newUpdate(coursID: number, user: User) {
         const cours = await this.repository.findOne({id: coursID }, {relations: ['disciplines', 'users']});
         const arrayUser = cours?.users;

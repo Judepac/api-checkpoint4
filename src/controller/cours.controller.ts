@@ -16,10 +16,14 @@ export const CoursController = (app: Application) => {
     const coursRouter: Router = express.Router();
     const coursService = new CoursService();
     const userService = new UserService();
-    const categorieService = new CategorieService();
 
     coursRouter.get('/', async (req: Request, res: Response) => {
         res.send(await coursService.getAll());
+    });
+    coursRouter.get('/:id', async (req: Request, res: Response) => {
+        const id = parseInt(req.params.id, 10);
+
+        res.send(await coursService.getCoursWilder(id));
     });
 
     coursRouter.post('/', async (req: Request, res: Response) => {
@@ -30,7 +34,6 @@ export const CoursController = (app: Application) => {
     coursRouter.post('/initiation', async (req: Request, res: Response) => {
         let user = req.body.reservation;
         const coursId = req.body.coursId;
-
         user = await userService.create(user);
         try {
             res.send(await coursService.newUpdate(coursId, user));
@@ -38,6 +41,17 @@ export const CoursController = (app: Application) => {
             throw new Error('Discicpline non trouvée.');
         }
 
+    });
+
+    coursRouter.post('/wilder/oui', async (req: Request, res: Response) => {
+        const user = req.body.user;
+        const coursId = req.body.coursid;
+        res.send(await coursService.newUpdate(coursId, user));
+    });
+
+    coursRouter.put('/', async (req: Request, res: Response) => {
+        const cours = req.body;
+        res.send(await coursService.update(cours));
     });
 
     app.use('/cours', coursRouter);

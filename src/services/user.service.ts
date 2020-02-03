@@ -14,6 +14,7 @@ export class UserService {
     async getAll() {
         return await this.repository.find();
     }
+
     async verify(user: User) {
         const password = user.password;
         const email = user.email;

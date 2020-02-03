@@ -21,6 +21,15 @@ export const UserController = (app: Application) => {
         res.send(await userService.getTeam());
     });
 
+    userRouter.post('/signup', async (req: Request, res: Response) => {
+        const user = req.body;
+        try {
+            res.send(await userService.verify(user));
+        } catch (error) {
+            res.sendStatus(409).send('Erreur identification');
+        }
+    });
+
     userRouter.post('/', async (req: Request, res: Response) => {
         const user = req.body;
         res.send(await userService.create(user));
@@ -28,6 +37,10 @@ export const UserController = (app: Application) => {
     userRouter.put('/', async (req: Request, res: Response) => {
         const user = req.body;
         res.send(await userService.update(user));
+    });
+    userRouter.delete('/', async (req: Request, res: Response) => {
+        const user = req.body;
+        res.send(await userService.delete(user));
     });
 
     app.use('/user', userRouter);

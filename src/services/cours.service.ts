@@ -13,7 +13,7 @@ export class CoursService {
 
     // Business logic
     async getAll() {
-        return await this.repository.find({relations: ['disciplines', 'users']});
+        return await this.repository.find({relations: ['disciplines', 'disciplines.categorie', 'users']});
     }
 
     async create(cours: Cours) {
@@ -29,7 +29,6 @@ export class CoursService {
         const id = cours.id;
         return await this.repository.update( id, cours);
     }
-
     async newUpdate(coursID: number, user: User) {
         const cours = await this.repository.findOne({id: coursID }, {relations: ['disciplines', 'users']});
         const arrayUser = cours?.users;

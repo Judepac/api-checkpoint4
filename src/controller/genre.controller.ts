@@ -14,7 +14,9 @@ export const GenreController = (app: Application) => {
     const genreService = new GenreService();
 
     genreRouter.get('/', async (req: Request, res: Response) => {
-        res.send(await genreService.getAll());
+       const genres = await genreService.getAll();
+
+       res.send(await genreService.getAll());
     });
 
     genreRouter.post('/', async (req: Request, res: Response) => {

@@ -1,6 +1,7 @@
 import { getCustomRepository } from 'typeorm';
 import { GenreRepository } from '../repository/genre.repository';
 import { Genre } from '../entity/genre.entity';
+import { CategorieRepository } from '../repository/categorie.repository';
 /**
  * Cette classe est un service
  * C'est ici que l'ensemble de la logique consernant les psort doit apparaitre.
@@ -12,7 +13,7 @@ export class GenreService {
 
     // Business logic
     async getAll() {
-        return await this.repository.find({relations: ['disciplines']});
+       return await this.repository.find({relations: ['disciplines', 'disciplines.categorie']});
     }
 
     async create(genre: Genre) {
